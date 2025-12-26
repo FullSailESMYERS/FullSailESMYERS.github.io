@@ -38,12 +38,38 @@
         }
 
         #hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
+    height: 100vh;
+    background: url("wizard-bg.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* dark overlay for readability */
+}
+
+#hero .overlay {
+    position: relative;
+    z-index: 2;
+}
+
+#hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+#hero p {
+    font-size: 1.5rem;
+    color: #ccc;
+}
 
         h1 {
             font-size: 3rem;
@@ -100,8 +126,10 @@
 </nav>
 
 <section id="hero">
-    <h1>Eric Myers</h1>
-    <p>Game Development Student • Programmer • Designer</p>
+    <div class="overlay">
+        <h1>Eric Myers</h1>
+        <p>Game Developer • Designer • Creator</p>
+    </div>
 </section>
 
 <section id="projects">
