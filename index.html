@@ -2,115 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eric Myers | Game Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #0f0f0f;
-            color: #eaeaea;
-            scroll-behavior: smooth;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
         }
 
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAV BAR ===== */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #111;
-            padding: 15px;
-            text-align: center;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px 30px;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
-            color: #6ef2c2;
-            margin: 0 15px;
+        nav h1 {
+            font-size: 1.4rem;
+            color: #f5d37b;
+        }
+
+        .menu {
+            position: relative;
+        }
+
+        .menu button {
+            background: none;
+            border: none;
+            color: #f5d37b;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            background: #111;
+            border: 1px solid #333;
+            width: 160px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: #ddd;
             text-decoration: none;
-            font-weight: 500;
         }
 
+        .dropdown a:hover {
+            background: #222;
+        }
+
+        .menu:hover .dropdown {
+            display: block;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            background: url("wizard-bg.jpg") center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #ddd;
+        }
+
+        /* ===== SECTIONS ===== */
         section {
             padding: 100px 20px;
-            max-width: 1000px;
+            max-width: 900px;
             margin: auto;
         }
 
-        #hero {
-    height: 100vh;
-    background: url("wizard-bg.jpg") center/cover no-repeat;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-#hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6); /* dark overlay for readability */
-}
-
-#hero .overlay {
-    position: relative;
-    z-index: 2;
-}
-
-#hero h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    color: #f0f0f0;
-    text-shadow: 0 0 20px rgba(0,0,0,0.8);
-}
-
-#hero p {
-    font-size: 1.5rem;
-    color: #ccc;
-}
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        h2 {
-            color: #6ef2c2;
+        h3 {
+            color: #f5d37b;
             margin-bottom: 20px;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            font-size: 2rem;
         }
 
         .card {
-            background: #1a1a1a;
+            background: #141414;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             border: 1px solid #2a2a2a;
-        }
-
-        a {
-            color: #6ef2c2;
-        }
-
-        #musicBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px 16px;
-            background: #1a1a1a;
-            color: #6ef2c2;
-            border: 1px solid #333;
-            cursor: pointer;
         }
 
         footer {
             text-align: center;
             padding: 20px;
+            background: #0b0b0b;
             color: #777;
         }
     </style>
@@ -119,77 +140,46 @@
 <body>
 
 <nav>
-    <a href="#hero">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <h1>Eric Myers</h1>
+    <div class="menu">
+        <button>Menu ▾</button>
+        <div class="dropdown">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+        </div>
+    </div>
 </nav>
 
-<section id="hero">
-    <div class="overlay">
-        <h1>Eric Myers</h1>
+<!-- HERO -->
+<div id="home" class="hero">
+    <div class="hero-content">
+        <h2>Eric Myers</h2>
         <p>Game Developer • Designer • Creator</p>
     </div>
-</section>
+</div>
 
+<!-- PROJECTS -->
 <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
+    <h3>Projects</h3>
+    <div class="card">
+        <h4>Wizard101 Inspired Character</h4>
+        <p>Custom character concept built for fantasy RPG inspiration and UI study.</p>
+    </div>
 
-        <div class="card">
-            <h3>Snake Game</h3>
-            <p>Classic Snake built in C++ featuring movement logic, saving, and game state handling.</p>
-            <p><strong>Tech:</strong> C++, File I/O</p>
-        </div>
-
-        <div class="card">
-            <h3>Game of Life</h3>
-            <p>Implementation of Conway’s Game of Life with dynamic grid updates.</p>
-            <p><strong>Tech:</strong> C++, Algorithms</p>
-        </div>
-
+    <div class="card">
+        <h4>Game Development Projects</h4>
+        <p>C++ games, gameplay systems, and interactive prototypes.</p>
     </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-    <h2>Skills</h2>
-    <p>
-        C++, Game Design, Object-Oriented Programming, Debugging, Git/GitHub,
-        Basic Web Development, Problem Solving
-    </p>
+    <h3>Skills</h3>
+    <div class="card">
+        <p>C++ • Game Design • Debugging • UI/UX • Git • Creative Problem Solving</p>
+    </div>
 </section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>
-        Email: <a href="mailto:youremail@example.com">youremail@example.com</a><br>
-        GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a><br>
-        LinkedIn: <a href="https://linkedin.com/in/yourname">linkedin.com/in/yourname</a>
-    </p>
-</section>
-
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicBtn" onclick="toggleMusic()">🎵 Play Music</button>
-
-<script>
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("musicBtn");
-    let playing = false;
-
-    function toggleMusic() {
-        if (!playing) {
-            music.play();
-            btn.textContent = "🔇 Mute Music";
-        } else {
-            music.pause();
-            btn.textContent = "🎵 Play Music";
-        }
-        playing = !playing;
-    }
-</script>
 
 <footer>
     © 2025 Eric Myers
@@ -197,3 +187,7 @@
 
 </body>
 </html>
+
+</body>
+</html>
+
